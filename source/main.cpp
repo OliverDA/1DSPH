@@ -1,0 +1,90 @@
+///
+/// \file main.cpp
+/// \date  18.05.2010
+/// \author Olli
+
+
+/*****the following section contains no comments related to the code****************************************
+ *****it only contains doxygen (documentation generator) information for front page building*******
+ */
+
+/*! \mainpage 1D Smoothed-particle hydrodynamics (SPH) code
+ *
+ * \section intro_sec Introduction
+ *
+ * this is a simplistic 1D compressible SPH code which simulates (using the default settings) the following Shock Tube Situation:
+  \verbatim
+				left hand side			right hand side
+  dimensions			[-1;0]				[0;1]
+  rho				1.0				0.125
+  p				1.0				0.1
+  u				0.0				0.0
+
+ \endverbatim
+ * the Simulation computes 80 time steps, each one of 0.0025 (80*0.0025=0.2)
+ *
+ * SPH and SDPD 2D code
+ *
+ * \section install_sec Installation
+ * Check the source code from github and compile
+ * \verbatim
+   git clone git://github.com/slitvinov/sph-blitz
+   cd sph-blitz
+   ./local-install.sh  \endverbatim
+ *
+
+ * \section sim Runnig simulations
+ * \verbatim
+   cd src
+   ./sph ../cases/couette \endverbatim
+ * \section post Postprocessing
+ *
+ * \section vis Visuzalization
+ *
+ * go into outdata folder
+ * run gnuplot
+ *
+ * load the gnuplotscript using the following command
+ * \verbatim
+	load 'plotScript2.p'
+  \endverbatim
+ *
+ */
+
+
+
+//includes headerfiles for all functions (and data structures) used directly within main function
+#include "parameters.h"
+#include "simulation.h"
+#include "setupSim.h"
+#include "marchTime.h"
+
+
+using namespace std;
+
+/*!  int main ()
+ *  \brief the main function
+ *
+ *  calls setupSim function and then marchTime function
+ *
+ *  \return 0.
+ */
+
+int main ()
+{
+
+
+parameters param;  ///< creates an instance of the parameters data structure
+simulation sims;   ///creates an instance of the simulation data structure
+
+//
+// sets up initial Conditions for Simulation
+setupSim(param, sims);
+
+
+
+marchTime(param, sims);
+
+return 0;
+}
+
