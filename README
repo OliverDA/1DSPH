@@ -1,1 +1,33 @@
-test
+
+
+1) to see automatically generated documentation:
+execute the following command in source folder:
+
+<< firefox html/index.html >>
+
+2) to generate (updated) automatic documentation:
+execute doxygen in sourcecode folder:
+
+<< doxygen >>
+
+
+3) to compile source code:
+type the following command in source folder
+<< male all >>
+
+4) to run simulation:
+type the following command in source folder
+
+<< ./1DSPH >>
+
+5) to visualize results
+go into outdata folder
+
+  a) launch gnuplot by typing
+
+  << gnuplot >>
+
+  b) in gnuplot load the following script:
+
+  << load 'plotScript2.p' >>
+

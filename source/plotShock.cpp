@@ -26,13 +26,14 @@ void plotShock(simulation& simuPS)
 	string fileEnding = ".txt";
 	stringstream number;
 
-	//control output:
-	cout<<"am in plotShock";
+
 	//reads number of timesteps into stringstream
 	number << simuPS.k;
+
 	//composes filename
 	file = firstPart+number.str()+fileEnding;
 	cout<<file<<endl;
+
 	//cast the std..string to a char string (normal c string)which is needed as filename
 	char *filename = const_cast<char *>(file.c_str());
 	cout<<filename<<endl;
@@ -48,9 +49,5 @@ void plotShock(simulation& simuPS)
 		txtFile.close();
 	}
 		else cout << "Unable to open/create file";
-//	for(int i=0;i<(int)simuPS.x.size();i++)
-//			{
-//				cout << simuPS.x[i]<<"   "<<simuPS.rho[i]<<"   "<<simuPS.p[i]<<"   "<<simuPS.u[i]<<"   "<<simuPS.e[i]<<endl;
-	//			txtFile << "This is another line.\n";
-//			}
+
 }

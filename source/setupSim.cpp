@@ -43,28 +43,11 @@ void setupSim (parameters& paramSUS, simulation& simuSUS)//attention: call by re
 			xr.insert(xr.end(),i);
 		xr.insert(xr.end(),paramSUS.xmax);//inserts xmax, condition in for loop compares "double" values, no "equal" possible
 
-		//control output for debugging
-		cout<<endl<<"xr const spacing with size"<<xr.size()<<endl;
-		for(int h=0;h<(int)xr.size();h++)
-			cout<<xr[h]<<"  ";
-		cout<<endl;
-
-		cout<<endl<<"xl const spacing with size"<<xl.size()<<endl;
-		for(int h=0;h<(int)xl.size();h++)
-			cout<<xl[h]<<"  ";
-		cout<<endl;
-
 		///merging the two vectors
 		//x.reserve(xl.size() + xr.size()); //reserves size for x
 		x.insert(x.end(), xl.begin(), xl.end()-1); //insert the first vector (leaving out "0")
 		x.insert(x.end(), xr.begin(), xr.end()); //insert the second.
-
-		//control output for debugging
-		cout<<endl<<"x const spacing with size"<<x.size()<<endl;
-		for(int h=0;h<(int)x.size();h++)
-			cout<<x[h]<<"  ";
-		cout<<endl;
-	}
+	}
 	else //if not constant spacing
 	{	//in this case: positionning a particle at xmin/xmax is not implemented!
 
@@ -76,28 +59,11 @@ void setupSim (parameters& paramSUS, simulation& simuSUS)//attention: call by re
 		for(double i=0;i<paramSUS.xmax;i=i+dxr)//loop starting at "0" to ensure that there is in any case a particle at this position
 			xr.insert(xr.end(),i);
 
-		//control output for debugging
-		cout<<endl<<"xr non const spacing with size"<<xr.size()<<endl;
-		for(int h=0;h<(int)xr.size();h++)
-			cout<<xr[h]<<"  ";
-		cout<<endl;
-
-		cout<<endl<<"xl non const spacing with size"<<xl.size()<<endl;
-		for(int h=0;h<(int)xl.size();h++)
-			cout<<xl[h]<<"  ";
-		cout<<endl;
-
 		///merging the two vectors
 		//x.reserve(xl.size() + xr.size()); //reserves size for x (
 		x.insert(x.end(), xl.begin(), xl.end()-1); //insert the first vector (leaving out "0")
 		x.insert(x.end(), xr.begin(), xr.end()); //insert the second.
-
-		//control output for debugging
-		cout<<endl<<"x non const spacing with size"<<x.size()<<endl;
-		for(int h=0;h<(int)x.size();h++)
-			cout<<x[h]<<"  ";
-		cout<<endl;
-	};
+	};
 //now one can determine the number of particles
 paramSUS.np=x.size();
 

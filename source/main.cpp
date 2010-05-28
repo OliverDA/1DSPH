@@ -12,44 +12,48 @@
  *
  * \section intro_sec Introduction
  *
- * this is a simplistic 1D compressible SPH code which simulates (using the default settings) the following Shock Tube Situation:
+ * this is a basic version of an 1D compressible SPH code which simulates (using the default settings) the following Shock Tube Situation:
   \verbatim
 				left hand side			right hand side
+
   dimensions			[-1;0]				[0;1]
   rho				1.0				0.125
   p				1.0				0.1
   u				0.0				0.0
-
  \endverbatim
  * the Simulation computes 80 time steps, each one of 0.0025 (80*0.0025=0.2)
  *
- * SPH and SDPD 2D code
- *
  * \section install_sec Installation
- * Check the source code from github and compile
+ * Check the source code from github
  * \verbatim
-   git clone git://github.com/slitvinov/sph-blitz
-   cd sph-blitz
-   ./local-install.sh  \endverbatim
+git clone git://github.com/olliinurlaub/1DSPH \endverbatim
  *
 
+ * \section com Compile
+ * go to source folder and type
+ * \verbatim 
+make all
+\endverbatim
  * \section sim Runnig simulations
+ * still in source folder:
  * \verbatim
-   cd src
-   ./sph ../cases/couette \endverbatim
- * \section post Postprocessing
- *
+ ./1DSPH \endverbatim
  * \section vis Visuzalization
  *
- * go into outdata folder
- * run gnuplot
- *
- * load the gnuplotscript using the following command
+ *a) go into outdata folder and run gnuplot
  * \verbatim
-	load 'plotScript2.p'
-  \endverbatim
+gnuplot
+\endverbatim
  *
- */
+ *b) load the gnuplotscript using the following command
+ * \verbatim
+load 'plotScript2.p' \endverbatim
+*/
+/*************************************END DOXYGEN SECTION***************************/
+
+/***********************************BEGIN CODE MAIN-FUNCTION************************/
+
+
 
 
 
