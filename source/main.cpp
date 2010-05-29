@@ -69,7 +69,7 @@ using namespace std;
 /*!  int main ()
  *  \brief the main function
  *
- *  calls setupSim function and then marchTime function
+ *  where first the initial condition setup function is called and then the time stepping function is executed
  *
  *  \return 0.
  */
@@ -78,8 +78,8 @@ int main ()
 {
 
 
-parameters param;  ///< creates an instance of the parameters data structure
-simulation sims;   ///creates an instance of the simulation data structure
+parameters param;  // creates an instance of the parameters data structure
+simulation sims;   //creates an instance of the simulation data structure
 
 //
 // sets up initial Conditions for Simulation
@@ -87,6 +87,7 @@ setupSim(param, sims);
 
 
 
+//execute time stepping function
 marchTime(param, sims);
 
 return 0;
