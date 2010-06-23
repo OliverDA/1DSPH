@@ -28,7 +28,8 @@ void plotShock(simulation& simuPS)
 
 
 	//reads number of timesteps into stringstream
-	number << simuPS.k;
+
+	  number << setw(6) << setfill('0') << simuPS.k;
 
 	//composes filename
 	file = firstPart+number.str()+fileEnding;
