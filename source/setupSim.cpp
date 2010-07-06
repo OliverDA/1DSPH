@@ -42,11 +42,6 @@ void setupSim (parameters& paramSUS, simulation& simuSUS)//attention: call by re
 		for(double i=0;i<paramSUS.xmax;i=i+dx)//loop starting at "0" to ensure that there is in any case a particle at this position
 			xr.insert(xr.end(),i);
 		xr.insert(xr.end(),paramSUS.xmax);//inserts xmax, condition in for loop compares "double" values, no "equal" possible
-
-		///merging the two vectors
-		//x.reserve(xl.size() + xr.size()); //reserves size for x
-		x.insert(x.end(), xl.begin(), xl.end()-1); //insert the first vector (leaving out "0")
-		x.insert(x.end(), xr.begin(), xr.end()); //insert the second.
 	}
 	else //if not constant spacing
 	{	//in this case: positionning a particle at xmin/xmax is not implemented!
@@ -58,17 +53,19 @@ void setupSim (parameters& paramSUS, simulation& simuSUS)//attention: call by re
 		//calculate right hand spacing
 		for(double i=0;i<paramSUS.xmax;i=i+dxr)//loop starting at "0" to ensure that there is in any case a particle at this position
 			xr.insert(xr.end(),i);
-
-		///merging the two vectors
-		//x.reserve(xl.size() + xr.size()); //reserves size for x (
-		x.insert(x.end(), xl.begin(), xl.end()-1); //insert the first vector (leaving out "0")
-		x.insert(x.end(), xr.begin(), xr.end()); //insert the second.
 	};
+
+	///merging the two vectors
+       	//x.reserve(xl.size() + xr.size()); //reserves size for x (
+       	x.insert(x.end(), xl.begin(), xl.end()-1); //insert the first vector (leaving out "0")
+       	x.insert(x.end(), xr.begin(), xr.end()); //insert the second.
+
+
 //now one can determine the number of particles
-paramSUS.np=x.size();
+	paramSUS.np=x.size();
 
 //finally initial conditions for simulation can be set up
-simuSUS.x=x; //affect positions to simulation data structure
+	  simuSUS.x=x; //affect positions to simulation data structure
 	//initialization of "intermediate" vectors, size must be included as otherwise assignment "vect[i]=x does NOT work!!!
 	vector<double> uleft(xl.size()),uright(xr.size()),rholeft(xl.size()),rhoright(xr.size()),pleft(xl.size()),pright(xr.size()),eleft(xl.size()),eright(xr.size()), mleft(xl.size()),mright(xr.size()),hleft(xl.size()),hright(xr.size());
 	//initialize left hand side
