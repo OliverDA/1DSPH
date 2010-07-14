@@ -46,14 +46,14 @@ struct parameters
 
 	//other parameters
 	int np; ///<number of particles
-	static const int nt = 80; ///< number of time steps
+	static const int nt = 100; ///< number of time steps
 	static const double dt = 0.0025; //</time step, lower time step if unstable, CFL is not obvious
 	static const int max_interactions = 10000; ///< number of maximum interactions list (=number of max interactions per time step)
 	static const double gamma = 1.4; ///< gas constant for "air"
 	static const double epsilon = 0.1; ///<parameter for Monaghan artificial viscosity
 	static const double alpha = 1.0;  ///<parameter for Monaghan artificial viscosity
 	static const double beta = 2.0;  ///<parameter for Monaghan artificial viscosity
-	static const int printstep = 5; ///< every "printstep"th step's results are written in (a separate) output data file
+	static const int printstep = 1; ///< every "printstep"th step's results are written in (a separate) output data file
 	static const double maxU=10000; ///<value for velocity not to be exceeded (program abort criterion)
 
 };

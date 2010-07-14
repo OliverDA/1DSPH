@@ -102,12 +102,12 @@ void calcDerivatives(simulation& simuCD,parameters& paramCD)
 		{
 			//get drho/dt @ current step (according to SPH forulations of equations of fluid dynamics
 		        //equation (2.18) Monaghan05 (not suitable for larger density ratios)
-		  //      sumrhoi=simuCD.m[j]*(simuCD.u[i]-simuCD.u[j])*simuCD.dWij[kay];
-	       	  //      sumrhoj=-simuCD.m[i]*(simuCD.u[j]-simuCD.u[i])*simuCD.dWij[kay];
+		         sumrhoi=simuCD.m[j]*(simuCD.u[i]-simuCD.u[j])*simuCD.dWij[kay];
+	       	         sumrhoj=-simuCD.m[i]*(simuCD.u[j]-simuCD.u[i])*simuCD.dWij[kay];
 
 		        //equation (2.17) Monaghan05 (better for larger density ratios)
-			  sumrhoi=simuCD.rho[i]*simuCD.m[j]/simuCD.rho[j]*(simuCD.u[i]-simuCD.u[j])*simuCD.dWij[kay];
-			  sumrhoj=-simuCD.rho[j]*simuCD.m[i]/simuCD.rho[i]*(simuCD.u[j]-simuCD.u[i])*simuCD.dWij[kay];
+			   // sumrhoi=simuCD.rho[i]*simuCD.m[j]/simuCD.rho[j]*(simuCD.u[i]-simuCD.u[j])*simuCD.dWij[kay];
+			   // sumrhoj=-simuCD.rho[j]*simuCD.m[i]/simuCD.rho[i]*(simuCD.u[j]-simuCD.u[i])*simuCD.dWij[kay];
 
 			simuCD.drho[i]=simuCD.drho[i]+sumrhoi;
 			simuCD.drho[j]=simuCD.drho[j]+sumrhoj;
