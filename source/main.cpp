@@ -62,6 +62,7 @@ load 'plotScript2.p' \endverbatim
 #include "simulation.h"
 #include "setupSim.h"
 #include "marchTime.h"
+#include "plotShock.h"
 
 
 using namespace std;
@@ -85,6 +86,7 @@ simulation sims;   //creates an instance of the simulation data structure
 // sets up initial Conditions for Simulation
 setupSim(param, sims);
 
+  plotShock(sims);
 
 
 //execute time stepping function

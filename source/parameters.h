@@ -17,7 +17,7 @@ struct parameters
 {
 	//flags
 	static const bool constspacing = false; ///<if true: uses const. (initial) spacing defined below (otherwise: constant mass, and (initial) spacing adapted according to rho)
-	static const bool sumdensity = false; ///<if true, sums density instead of integrating eq.
+	static const bool sumdensity = true; ///<if true, sums density instead of integrating eq.
 
 	//geometry and mass
 	static const double xmin = -1.00;///<domain left border
@@ -46,7 +46,7 @@ struct parameters
 
 	//other parameters
 	int np; ///<number of particles
-	static const int nt = 100; ///< number of time steps
+	static const int nt = 80; ///< number of time steps
 	static const double dt = 0.0025; //</time step, lower time step if unstable, CFL is not obvious
 	static const int max_interactions = 10000; ///< number of maximum interactions list (=number of max interactions per time step)
 	static const double gamma = 1.4; ///< gas constant for "air"

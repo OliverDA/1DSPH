@@ -48,7 +48,7 @@ void calcDerivatives(simulation& simuCD,parameters& paramCD)
 	calcBuddies(simuCD,paramCD);
 
 	//sum up for rho current step
-	if (paramCD.sumdensity||simuCD.k==1) //either if we are on first step (there we "smooth" density, don't know why this is useful, rho already given from initial condition), or we have chosen to calculate rho in "sum density" manner...
+	  if (paramCD.sumdensity||simuCD.k==1) //either if we are on first step (there we "smooth" density, don't know why this is useful, rho already given from initial condition), or we have chosen to calculate rho in "sum density" manner...
 	{
 		for (int i=0;i<paramCD.np;i++)//self contribution
 		{
@@ -64,12 +64,28 @@ void calcDerivatives(simulation& simuCD,parameters& paramCD)
 		};
 	};
 
+
+ofstream tx2tFi1le("SmoothedDensityN1");
+	if (tx2tFi1le.is_open())
+        {
+	  for (int d=paramCD.np-1;d>=0;d--)//self contribution
+	  {
+	    tx2tFi1le <<setprecision (10)<< ::setw( 5 )<<d<< ::setw(25)<<simuCD.rho[d]<<endl;
+	
+	  }
+	tx2tFi1le.close();
+	}
+		else cout << "Unable to open/create file";
+
+
 	//calculate pressure and sound speed @ current step
 	for(int i=0;i<paramCD.np;i++)
 	{
 		simuCD.p[i]=(paramCD.gamma-1)*simuCD.rho[i]*simuCD.e[i]; //ideal gas equation of state
 		c[i]=sqrt(paramCD.gamma*(paramCD.gamma-1)*simuCD.e[i]); //according to formula for sound speed in ideal gas
 	};
+
+	  ofstream t3xtFile;
 
 	//calculate forces at current step
 	for (int kay=0; kay <simuCD.niac;kay++)
@@ -117,5 +133,33 @@ void calcDerivatives(simulation& simuCD,parameters& paramCD)
 		simuCD.du[j]=simuCD.du[j]+sumuj;
 		simuCD.de[i]=simuCD.de[i]+sumei;
 		simuCD.de[j]=simuCD.de[j]+sumej;
+
+	
+		  t3xtFile.open ("ArtVisN1", fstream::in | fstream::out | fstream::app);
+
+	  
+		
+		  t3xtFile <<setprecision (6)<< ::setw( 7 )<<i+1<<::setw(7)<<j+1<<::setw( 15 )<<piij<<endl;
+//			txtFile << "This is another line.\n";
+		
+		t3xtFile.close();
+		  
+	
+
+
 	};
-}
+
+
+       	ofstream tx2tFile("DerivativesN1");
+	if (tx2tFile.is_open())
+        {
+	  for (int d=paramCD.np-1;d>=0;d--)//self contribution
+	  {
+	    tx2tFile <<setprecision (9)<< ::setw( 5 )<<d+1<< ::setw(25)<<simuCD.du[d]<<::setw(25)<<simuCD.de[d]<<endl;
+	
+	  }
+	tx2tFile.close();
+	}
+		else cout << "Unable to open/create file";
+       
+ }

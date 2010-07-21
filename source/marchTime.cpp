@@ -9,6 +9,8 @@
 #include <iostream>  //for output on screen
 #include <vector>
 #include <stdlib.h> ///for exit command
+#include<iomanip>
+#include <fstream>
 
 #include "calcDerivatives.h"
 #include "parameters.h"
@@ -64,6 +66,20 @@ void marchTime (parameters& paramMT, simulation& simuMT)
 				}
 			}
 		}
+
+ofstream tFile("updateHalfUeN2");
+	if (tFile.is_open())
+        {
+	  for(int i=(int)simuMT.x.size()-1;i>=0;i--) {
+	  
+	  tFile <<setprecision(9)<< ::setw( 5 )<<i+1<<::setw(16)<<simuMT.x[i]+2<< ::setw(16)<<simuMT.u[i]<<::setw(15)<<0<<::setw(15)<<simuMT.e[i]<<endl;
+	
+	  }
+	tFile.close();
+	}
+		else cout << "Unable to open/create file";
+
+
 
 		// we call here (remember: u,e, are at full timestep (either calculated above or (if first timestep)=initial values) the calcDerivatives function to get new derivatives
 		calcDerivatives(simuMT,paramMT);

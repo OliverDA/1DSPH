@@ -6,6 +6,11 @@
 #include<iostream>
 #include<vector>
 #include<math.h> //for fabs-function (absolute value for floating/double numbers)
+#include <fstream>
+#include<cstring>
+#include <sstream>
+#include <iomanip>
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -55,4 +60,17 @@ void calcBuddies(simulation& simuCB,parameters& paramCB)
 			};
 		};
 	};
+
+	ofstream txtFile("BuddiesN1");
+	if (txtFile.is_open())
+	{
+	  for(int i=simuCB.niac-1;i>=0;i--)
+		{
+		  txtFile <<setprecision (9)<< ::setw( 7 )<<	simuCB.pairi[i]+1<<::setw(6)<<simuCB.pairj[i]+1<<::setw(17)<<fabs(simuCB.x[simuCB.pairi[i]]-simuCB.x[simuCB.pairj[i]])<<::setw( 17 )<<simuCB.Wij[i]<<::setw( 17 )<<simuCB.dWij[i]<<endl;
+//			txtFile << "This is another line.\n";
+		}
+		txtFile.close();
+	}
+		else cout << "Unable to open/create file";
+
 }

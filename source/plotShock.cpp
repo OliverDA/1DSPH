@@ -42,9 +42,9 @@ void plotShock(simulation& simuPS)
 	ofstream txtFile(filename);
 	if (txtFile.is_open())
 	{
-		for(int i=0;i<(int)simuPS.x.size();i++)
+	  for(int i=(int)simuPS.x.size()-1;i>=0;i--)
 		{
-		  txtFile <<setprecision (10)<< ::setw( 20 )<<simuPS.x[i]<<::setw(5)<<0.0<<::setw( 20 )<<simuPS.rho[i]<<::setw( 20 )<<simuPS.p[i]<<::setw( 20 )<<simuPS.u[i]<<::setw( 20 )<<simuPS.e[i]<<endl;
+		  txtFile <<setprecision (9)<< ::setw( 17 )<<simuPS.x[i]+2<<::setw(17)<<0.0<<::setw( 17 )<<simuPS.rho[i]<<::setw( 17 )<<simuPS.p[i]<<::setw( 17 )<<simuPS.u[i]<<::setw( 17 )<<simuPS.e[i]<<endl;
 //			txtFile << "This is another line.\n";
 		}
 		txtFile.close();
