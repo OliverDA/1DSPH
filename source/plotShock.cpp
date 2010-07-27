@@ -44,7 +44,7 @@ void plotShock(simulation& simuPS)
 	{
 	  for(int i=(int)simuPS.x.size()-1;i>=0;i--)
 		{
-		  txtFile <<setprecision (9)<< ::setw( 17 )<<simuPS.x[i]+2<<::setw(17)<<0.0<<::setw( 17 )<<simuPS.rho[i]<<::setw( 17 )<<simuPS.p[i]<<::setw( 17 )<<simuPS.u[i]<<::setw( 17 )<<simuPS.e[i]<<endl;
+		  txtFile <<setprecision (9)<< ::setw( 17 )<<simuPS.x[i]<<::setw(17)<<0.0<<::setw( 17 )<<simuPS.rho[i]<<::setw( 17 )<<simuPS.p[i]<<::setw( 17 )<<simuPS.u[i]<<::setw( 17 )<<simuPS.e[i]<<::setw(17)<<simuPS.m[i]<<endl;
 //			txtFile << "This is another line.\n";
 		}
 		txtFile.close();

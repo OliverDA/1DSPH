@@ -124,6 +124,7 @@ void setupSim (parameters& paramSUS, simulation& simuSUS)//attention: call by re
 				mright[i]=paramSUS.rhor*paramSUS.dx;
 			};
 		//merge vectors
+	        simuSUS.m.clear();
 		simuSUS.m.insert(simuSUS.m.end(), mleft.begin(), mleft.end()); //insert the first vector
 		simuSUS.m.insert(simuSUS.m.end(), mright.begin(), mright.end()); //insert the second
 	};
