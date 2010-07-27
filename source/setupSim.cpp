@@ -42,6 +42,7 @@ void setupSim (parameters& paramSUS, simulation& simuSUS)//attention: call by re
 		xl.insert(xl.begin(),xmin);//inserts xmin, condition in for loop compares "double" values, no "equal" possible
 		//calculate right hand spacing
 		for(double i=0;i<paramSUS.xmax;i=i+dx)//loop starting at "0" to ensure that there is in any case a particle at this position
+
 			xr.insert(xr.end(),i);
 		xr.insert(xr.end(),xmax);//inserts xmax, condition in for loop compares "double" values, no "equal" possible
 	}
@@ -123,6 +124,7 @@ void setupSim (parameters& paramSUS, simulation& simuSUS)//attention: call by re
 				mright[i]=paramSUS.rhor*paramSUS.dx;
 			};
 		//merge vectors
+		simuSUS.m.clear();
 		simuSUS.m.insert(simuSUS.m.end(), mleft.begin(), mleft.end()); //insert the first vector
 		simuSUS.m.insert(simuSUS.m.end(), mright.begin(), mright.end()); //insert the second
 	};
