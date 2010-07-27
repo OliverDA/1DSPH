@@ -16,7 +16,7 @@
 struct parameters
 {
 	//flags
-///\todo{totally strange: as soon as I change the constspacing flag from false to true I get a compilation error: undefined reference to the member parameters::xmin/xmax whin it is used in the array.insert() method in setupSim.cpp. I read in the internet about problems of c++ with static const declarations in header files...??? making local copies of the variables solved the bug!!!}
+///\todo{totally strange: as soon as I change the constspacing flag from false to true I get a compilation error: undefined reference to the member parameters::xmin/xmax whin it is used in the array.insert() method in setupSim.cpp. I read in the internet about problems of c++ with static const declarations in header files...??? but probably the .inster() method just does not support stat const values???? making local copies of the variables solved the bug!!!}
 	static const bool constspacing = true; ///<if true: uses const. (initial) spacing defined below (otherwise: constant mass, and (initial) spacing adapted according to rho)
 	static const bool sumdensity = true; ///<if true, sums density instead of integrating eq.
 
