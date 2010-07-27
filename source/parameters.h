@@ -16,8 +16,8 @@
 struct parameters
 {
 	//flags
-	static const bool constspacing = false; ///<if true: uses const. (initial) spacing defined below (otherwise: constant mass, and (initial) spacing adapted according to rho)
-	static const bool sumdensity = false; ///<if true, sums density instead of integrating eq.
+	static const bool constspacing = true; ///<if true: uses const. (initial) spacing defined below (otherwise: constant mass, and (initial) spacing adapted according to rho)
+	static const bool sumdensity = true; ///<if true, sums density instead of integrating eq.
 
 	//geometry and mass
 	static const double xmin = -1.00;///<domain left border
