@@ -16,8 +16,10 @@ using namespace std;
 void setupSim (parameters& paramSUS, simulation& simuSUS)//attention: call by reference: changes to local variables xxxSUS affect global variables (params, simus) in main function
 {
 	//calculate left and right particle spacings based on constant mass
-	double dxl, dxr;
-
+  double dxl, dxr, xmin, xmax;
+    //some local copies needed
+        xmin=paramSUS.xmin;
+        xmax=paramSUS.xmax;
 	paramSUS.dxl=paramSUS.mass/paramSUS.rhol;
 	dxl=paramSUS.dxl;  //probably just as abbreviation
 
@@ -35,23 +37,23 @@ void setupSim (parameters& paramSUS, simulation& simuSUS)//attention: call by re
 	if (paramSUS.constspacing)
 	{
 		//calculate left hand spacing
-		for(double i=0;i>paramSUS.xmin;i=i-dx)//loop starting at "0" backwards to ensure that there is in any case a particle at this position
+		for(double i=0;i>xmin;i=i-dx)//loop starting at "0" backwards to ensure that there is in any case a particle at this position
 			xl.insert(xl.begin(),i);
-		xl.insert(xl.begin(),paramSUS.xmin);//inserts xmin, condition in for loop compares "double" values, no "equal" possible
+		xl.insert(xl.begin(),xmin);//inserts xmin, condition in for loop compares "double" values, no "equal" possible
 		//calculate right hand spacing
 		for(double i=0;i<paramSUS.xmax;i=i+dx)//loop starting at "0" to ensure that there is in any case a particle at this position
 			xr.insert(xr.end(),i);
-		xr.insert(xr.end(),paramSUS.xmax);//inserts xmax, condition in for loop compares "double" values, no "equal" possible
+		xr.insert(xr.end(),xmax);//inserts xmax, condition in for loop compares "double" values, no "equal" possible
 	}
 	else //if not constant spacing
 	{	//in this case: positionning a particle at xmin/xmax is not implemented!
 
 		//calculate left hand spacing
-		for(double i=0;i>paramSUS.xmin;i=i-dxl)//loop starting at "0" backwards to ensure that there is in any case a particle at this position
+		for(double i=0;i>xmin;i=i-dxl)//loop starting at "0" backwards to ensure that there is in any case a particle at this position
 			xl.insert(xl.begin(),i);
 
 		//calculate right hand spacing
-		for(double i=0;i<paramSUS.xmax;i=i+dxr)//loop starting at "0" to ensure that there is in any case a particle at this position
+		for(double i=0;i<xmax;i=i+dxr)//loop starting at "0" to ensure that there is in any case a particle at this position
 			xr.insert(xr.end(),i);
 	};
 
