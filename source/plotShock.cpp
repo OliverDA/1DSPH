@@ -4,7 +4,7 @@
 /// \author Olli
 
 //updates the diagramm by adding new values
-// perhaps I will not directly plot to a diagram but instead write the results into a file, which can then be post procssed...
+// perhaps I will not directly plot to a diagram but instead write the results into a file, which can then be post processed...
 
 #include <iostream>
 #include <fstream>
@@ -18,15 +18,14 @@
 
 using namespace std;
 
-void plotShock(simulation& simuPS)
-{
-	//some variables needed to construct the output file name (with ongoing numbers)
-	string file;
-	string firstPart = "../outdata/dataStep";
-	string fileEnding = ".txt";
+void plotShock(simulation& simuPS) {
+  //some variables required to construct the output file name (with ongoing numbers)
+  string file;
+    string firstPart = "../outdata/dataStep";
+      string fileEnding = ".txt";
 	stringstream number;
-
-
+	  
+	  
 	//reads number of timesteps into stringstream
 
 	  number << setw(6) << setfill('0') << simuPS.k;
@@ -44,7 +43,8 @@ void plotShock(simulation& simuPS)
 	{
 	  for(int i=(int)simuPS.x.size()-1;i>=0;i--)
 		{
-		  txtFile <<setprecision (9)<< ::setw( 17 )<<simuPS.x[i]<<::setw(17)<<0.0<<::setw( 17 )<<simuPS.rho[i]<<::setw( 17 )<<simuPS.p[i]<<::setw( 17 )<<simuPS.u[i]<<::setw( 17 )<<simuPS.e[i]<<::setw(17)<<simuPS.m[i]<<endl;
+		  txtFile <<setprecision (9)
+			  << ::setw( 17 )<<simuPS.x[i]<<::setw(17)<<0.0<<::setw( 17 )<<simuPS.rho[i]<<::setw( 17 )<<simuPS.p[i]<<::setw( 17 )<<simuPS.u[i]<<::setw( 17 )<<simuPS.e[i]<<::setw(17)<<simuPS.m[i]<<endl;
 //			txtFile << "This is another line.\n";
 		}
 		txtFile.close();
