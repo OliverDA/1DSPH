@@ -114,7 +114,7 @@ void setupSim (parameters& paramSUS, simulation& simuSUS)//attention: call by re
 	if (paramSUS.constspacing)
 	{
 		//calculate left hand side mass
-		for (int i=0;i<(int)xl.size();i++)
+		for (int i=0;i<(int)xl.size()-1;i++)
 			{
 				mleft[i]=paramSUS.rhol*paramSUS.dx;
 			};
@@ -126,7 +126,7 @@ void setupSim (parameters& paramSUS, simulation& simuSUS)//attention: call by re
 		//merge vectors
 	        simuSUS.m.clear();
 		simuSUS.m.insert(simuSUS.m.end(), mleft.begin(), mleft.end()); //insert the first vector
-		simuSUS.m.insert(simuSUS.m.end(), mright.begin(), mright.end()); //insert the second
+		simuSUS.m.insert(simuSUS.m.end()-1, mright.begin(), mright.end()); //insert the second
 	};
 
 	//initialize all derivatives vectors with zeros

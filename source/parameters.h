@@ -17,14 +17,14 @@ struct parameters
 {
 	//flags
 ///\todo{totally strange: as soon as I change the constspacing flag from false to true I get a compilation error: undefined reference to the member parameters::xmin/xmax whin it is used in the array.insert() method in setupSim.cpp. I read in the internet about problems of c++ with static const declarations in header files...??? but probably the .inster() method just does not support stat const values???? making local copies of the variables solved the bug!!!}
-	static const bool constspacing = true; ///<if true: uses const. (initial) spacing defined below (otherwise: constant mass, and (initial) spacing adapted according to rho)
+	static const bool constspacing = false; ///<if true: uses const. (initial) spacing defined below (otherwise: constant mass, and (initial) spacing adapted according to rho)
 	static const bool sumdensity = true; ///<if true, sums density instead of integrating eq.
 
 	//geometry and mass
 	static const double xmin = -1.00;///<domain left border
 	static const double xmax = 1.00; ///<domain right border
-	static const double mass = 0.001875; ///<(const.) mass of a single particle (in case of "const mass" calculation
-	static const double h = 0.015; ///<smoothing length, make sure smaller (according to matlab comment!?!) than dxl, dxr
+	static const double mass = 0.001875/1.5; ///<(const.) mass of a single particle (in case of "const mass" calculation
+	static const double h = 0.013/1.5; ///<smoothing length, make sure smaller (according to matlab comment!?!) than dxl, dxr
 	static const double fac = 2; ///<factor used for calculating the influence of particles (=1/2 of support length which is here 4h)
 
 
@@ -47,9 +47,9 @@ struct parameters
 
 	//other parameters
 	int np; ///<number of particles
-	static const int nt = 80; ///< number of time steps
-	static const double dt = 0.0025; //</time step, lower time step if unstable, CFL is not obvious
-	static const int max_interactions = 10000; ///< number of maximum interactions list (=number of max interactions per time step)
+	static const int nt = 80*2; ///< number of time steps
+	static const double dt = 0.0025/2; //</time step, lower time step if unstable, CFL is not obvious
+	static const int max_interactions = 100000; ///< number of maximum interactions list (=number of max interactions per time step)
 	static const double gamma = 1.4; ///< gas constant for "air"
 	static const double epsilon = 0.1; ///<parameter for Monaghan artificial viscosity
 	static const double alpha = 1.0;  ///<parameter for Monaghan artificial viscosity
